@@ -2,6 +2,8 @@
 
 Portafolio profesional completo en español e inglés. Presenta proyectos empresariales, procesos, automatización y análisis de transacciones con Elasticsearch/Kibana. Incluye seis fichas de proyectos y tres casos interactivos con datos ficticios.
 
+La identidad visual combina fondo oscuro, acentos violeta y cian, tipografía Space Grotesk y Manrope, un diagrama SVG animado y apariciones discretas al recorrer las secciones. Las animaciones respetan `prefers-reduced-motion`. No se utilizan videos, librerías de animación ni recursos remotos en ejecución.
+
 ## Vista previa local
 
 Solo requiere Python 3; no hay paquetes que instalar:
@@ -34,7 +36,7 @@ Referencia oficial: [Configuración de Vercel](https://vercel.com/docs/project-c
 
 ## Actualizar contenido
 
-Editar `src/content.js` para el perfil y los textos generales, y `src/project-stories.js` para los seis casos de proyecto:
+Editar `src/content.js` para el perfil y los textos generales, `src/project-stories.js` para los seis casos y `src/career.js` para trayectoria y formación:
 
 - `profile`: correo, GitHub, LinkedIn y rutas al CV por idioma.
 - `copy.es` / `copy.en`: todo el texto general.
@@ -44,6 +46,8 @@ Editar `src/content.js` para el perfil y los textos generales, y `src/project-st
 Un valor `null` significa **no disponible o no verificado**. La interfaz oculta ese campo y cualquier enlace sin destino válido; nunca se debe reemplazar por una función, resultado o tecnología supuesta. `role` y `result` aceptan `{ es: '...', en: '...' }` cuando se confirme el aporte o resultado.
 
 Para incorporar un CV, guardar el PDF aprobado en `assets/` y completar `profile.cv.es` y/o `profile.cv.en` con su ruta, por ejemplo `/assets/cv-es.pdf`. El botón aparece solo en el idioma que tenga un archivo disponible.
+
+La versión actual incluye el CV original aportado por Karelina en `assets/karelina-fabra-cv-2026.pdf`: cuatro páginas, español e inglés en el mismo documento, sin modificaciones. Ambas versiones del sitio descargan ese archivo. Las cifras de perfil (10+ años, equipos de ocho personas y cuarto año de Ingeniería en IA en curso), los cinco cargos de la trayectoria y la formación proceden de ese CV.
 
 Para incorporar capturas, añadir a `screenshots` objetos de este formato:
 
@@ -62,10 +66,12 @@ Los detalles por completar están en [PENDIENTES.md](PENDIENTES.md) y en `pendin
 ```text
 index.html             Documento y metadatos
 assets/styles.css      Diseño responsive, impresión y movimiento reducido
-assets/fonts/          Manrope alojada localmente y su licencia OFL
+assets/fonts/          Manrope, Space Grotesk y sus licencias OFL, alojadas localmente
 src/content.js         Contenido bilingüe y registro de faltantes
 src/project-stories.js  Seis casos bilingües contrastados con código y documentación
 src/project-case.js     Presentación de casos y fichas completas reutilizables
+src/career.js           Trayectoria y formación extraídas del CV, en ambos idiomas
+src/hero-scene.js       Composición SVG animada de procesos, datos e IA
 src/ui.js              Componentes visuales, iconos y validación de enlaces
 src/app.js             Navegación, idioma, categorías y fichas
 src/demo.js            Datos sintéticos, filtros y agregaciones
@@ -98,4 +104,4 @@ This is Karelina Fabra’s bilingual professional portfolio. Run `python3 script
 
 General content lives in `src/content.js`; project case studies live in `src/project-stories.js` and are rendered by `src/project-case.js`. Maintain both languages together. Ownership was confirmed by Karelina and capabilities were checked against the original code and documentation through read-only access. A `null` field is unavailable or unverified and is omitted from the public interface. Illustrations are explicitly conceptual. Analytics data is fictional and never connected to live systems. Measured outcomes, real payment processing and email deliveries require separate evidence.
 
-Font: [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope), licensed under the SIL Open Font License in `assets/fonts/OFL.txt`.
+Fonts: [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) and [Space Grotesk](https://github.com/google/fonts/tree/main/ofl/spacegrotesk), licensed under the SIL Open Font License in `assets/fonts/OFL.txt` and `assets/fonts/SPACE-GROTESK-OFL.txt`.

@@ -1,5 +1,7 @@
 import { profile, copy, projects } from './content.js';
-import { escapeHtml as e, icon, safeUrl, externalLink, projectVisual, sectionHeading } from './ui.js';
+import { career } from './career.js';
+import { renderHeroScene } from './hero-scene.js';
+import { escapeHtml as e, icon, safeUrl, externalLink, sectionHeading } from './ui.js';
 import { initialFilters } from './demo.js';
 import { renderCase, renderDashboard } from './dashboard.js';
 import { renderProjectCard, renderProjectDetails } from './project-case.js';
@@ -13,6 +15,7 @@ const state = {
   category: 'all', activeCase: 0, filters: {...initialFilters}, projectId: null,
 };
 let sectionObserver;
+let revealObserver;
 let lastProjectTrigger;
 
 function header(t) {
@@ -20,7 +23,8 @@ function header(t) {
 }
 
 function hero(t) {
-  return `<section class="hero container" id="inicio" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow"><span class="eyebrow-dot"></span>${t.eyebrow}</p><p class="hero-name">Karelina Fabra</p><h1 id="hero-title">${t.heroLead}<br><span>${t.heroAccent}</span><br>${t.heroEnd}</h1><p class="hero-description">${t.heroBody}</p><div class="hero-actions"><a class="button button-primary" href="#proyectos">${t.viewProjects}${icon('arrow')}</a><a class="text-link" href="#datos">${t.viewData}${icon('diagonal')}</a></div><p class="hero-note"><span></span>${t.heroNote}</p></div><figure class="hero-system"><div class="system-topline"><span>${t.systemLabel}</span>${icon('spark')}</div><h2>${t.systemTitle}</h2><div class="system-map" aria-hidden="true"><div class="map-grid"></div><div class="map-orbit orbit-a"></div><div class="map-orbit orbit-b"></div><div class="map-line line-top"></div><div class="map-line line-bottom"></div><div class="map-line line-left"></div><div class="map-line line-right"></div><div class="map-input"><span class="tiny-dot"></span>${t.diagramInput}${icon('diagonal')}</div><div class="map-node map-process">${icon('layers')}<span>${t.systemTags[0]}</span></div><div class="map-core">${icon('spark')}<span>KF</span></div><div class="map-node map-data">${icon('chart')}<span>${t.systemTags[1]}</span></div><div class="map-ai">${icon('spark')}<span>${t.systemTags[2]}</span></div><div class="map-output">${icon('check')}<span>${t.diagramOutput}</span></div><span class="map-point point-a"></span><span class="map-point point-b"></span></div><figcaption><span class="tiny-dot"></span>${t.diagramCaption}</figcaption></figure></section><div class="expertise-ribbon"><div class="container">${t.ribbon.map((label,i)=>`<span>${icon(['layers','grid','spark','chart'][i])}${label}</span>`).join('')}</div></div>`;
+  const cv = safeUrl(profile.cv[state.lang], {local:true});
+  return `<div class="hero-wrap"><section class="hero container" id="inicio" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow"><span class="eyebrow-dot"></span>${t.eyebrow}</p><div class="hero-identity"><span class="hero-name">Karelina Fabra</span><span class="identity-divider"></span><span class="hero-role">${t.heroRole}</span></div><h1 id="hero-title"><span class="hero-lead">${t.heroLead}</span><span class="hero-accent">${t.heroAccent}</span><span class="hero-end">${t.heroEnd}</span></h1><p class="hero-description">${t.heroBody}</p><div class="hero-actions"><a class="button button-primary" href="#proyectos">${t.viewProjects}${icon('diagonal')}</a>${cv?`<a class="button button-outline hero-cv" href="${e(cv)}" download title="${e(t.cvBilingual)}">${t.cvCta}${icon('download')}</a>`:''}</div><a class="hero-data-link text-link" href="#datos">${t.viewData}${icon('arrow')}</a></div>${renderHeroScene(t)}<dl class="hero-stats">${t.heroStats.map(stat=>`<div><dt>${e(stat.label)}</dt><dd>${e(stat.value)}</dd></div>`).join('')}</dl><p class="hero-location">${icon('globe')}${t.heroLocation}<span> / </span>${t.heroNote}</p></section></div><div class="expertise-ribbon"><div class="container">${t.ribbon.map((label,i)=>`<span>${icon(['layers','grid','spark','chart'][i])}${label}<i aria-hidden="true">✳</i></span>`).join('')}</div></div>`;
 }
 
 function projectCards() {
@@ -38,11 +42,17 @@ function dataSection(t) {
 }
 
 function aboutSection(t) {
-  return `<section id="sobre-mi" class="section container about-section" aria-labelledby="about-title"><div class="about-visual"><div class="about-monogram" aria-hidden="true">kf<span>·</span><div class="monogram-orbit"></div><span class="monogram-point"></span></div><span class="about-caption">${t.aboutCaption}</span><p>${e(t.aboutCallout).replace('\n','<br>')}</p></div><div class="about-copy"><p class="eyebrow">${t.aboutEyebrow}</p><h2 id="about-title">${t.aboutTitle}<br><span>${t.aboutAccent}</span></h2><p class="about-lead">${t.aboutP1}</p><p>${t.aboutP2}</p><p>${t.aboutP3}</p><a class="text-link" href="#metodo">${t.methodsLink}${icon('arrow')}</a></div></section>`;
+  const cv=safeUrl(profile.cv[state.lang],{local:true});
+  return `<section id="sobre-mi" class="section container about-section" aria-labelledby="about-title"><div class="about-visual profile-card"><div class="profile-topline"><span>KARELINA FABRA</span>${icon('spark')}</div><div class="profile-monogram" aria-hidden="true"><span>KF<span>·</span></span><i class="profile-orbit"></i><i class="profile-orbit orbit-alt"></i></div><div class="profile-caption"><span class="eyebrow">${t.aboutCaption}</span><p>${e(t.aboutCallout).replace('\n','<br>')}</p></div><div class="profile-study">${icon('layers')}<span>${e(career[state.lang].degree)}<small>${e(career[state.lang].degreeDetail)}</small></span></div></div><div class="about-copy"><p class="eyebrow">${t.aboutEyebrow}</p><h2 id="about-title">${t.aboutTitle}<br><span>${t.aboutAccent}</span></h2><p class="about-lead">${t.aboutP1}</p><p>${t.aboutP2}</p><p>${t.aboutP3}</p><div class="about-actions">${cv?`<a class="button button-outline" href="${e(cv)}" download>${t.cvCta}${icon('download')}</a>`:''}<a class="text-link" href="#metodo">${t.methodsLink}${icon('arrow')}</a></div></div></section>`;
+}
+
+function careerSection() {
+  const c=career[state.lang];
+  return `<section id="trayectoria" class="career-section container" aria-labelledby="career-title"><div class="career-intro"><p class="eyebrow">${e(c.eyebrow)}</p><h2 id="career-title">${e(c.title)}</h2><p>${e(c.description)}</p></div><div class="career-grid"><div class="career-timeline">${c.roles.map((role,i)=>`<article class="timeline-item${i===0?' current-role':''}"><span class="timeline-dot"></span><p class="timeline-date">${e(role.date)}</p><div class="timeline-content"><span class="timeline-company">${e(role.company)}</span><h3>${e(role.title)}</h3><p>${e(role.summary)}</p></div></article>`).join('')}</div><aside class="education-card"><span class="eyebrow">${e(c.educationLabel)}</span><h3>${e(c.educationTitle)}</h3><div class="education-degree">${icon('spark')}<div><h4>${e(c.degree)}</h4><p>${e(c.degreeDetail)}</p></div></div><ul>${c.education.map(item=>`<li>${icon('check')}<span>${e(item)}</span></li>`).join('')}</ul><div class="career-languages"><p>${e(c.languages)}</p><span>${e(c.community)}</span></div></aside></div></section>`;
 }
 
 function methodSection(t) {
-  return `<section id="metodo" class="method-section section" aria-labelledby="method-title"><div class="container">${sectionHeading(t.methodEyebrow,t.methodTitle,'','method-title')}<div class="method-grid">${t.steps.map((step,i)=>`<article class="method-step"><div class="step-number"><span>0${i+1}</span>${i<3?icon('arrow'):icon('check')}</div><h3>${step.title}</h3><p>${step.text}</p></article>`).join('')}</div><div class="toolbox"><h3>${t.toolbox}</h3><div class="toolbox-grid">${t.tools.map(([title,desc],i)=>`<div>${icon(['chart','spark','layers','grid'][i])}<div><strong>${title}</strong><span>${desc}</span></div></div>`).join('')}</div></div></div></section>`;
+  return `<section id="metodo" class="method-section section" aria-labelledby="method-title"><div class="container">${sectionHeading(t.methodEyebrow,t.methodTitle,'','method-title')}<div class="method-grid">${t.steps.map((step,i)=>`<article class="method-step"><div class="step-number"><span>0${i+1}</span>${i<3?icon('arrow'):icon('check')}</div><h3>${step.title}</h3><p>${step.text}</p></article>`).join('')}</div><div class="toolbox"><h3>${t.toolbox}</h3><div class="toolbox-grid">${t.tools.map(([title,desc],i)=>`<div>${icon(['spark','layers','grid','chart','user','globe'][i])}<div><strong>${title}</strong><span>${desc}</span></div></div>`).join('')}</div></div></div></section>`;
 }
 
 function contactSection(t) {
@@ -101,7 +111,16 @@ function setupSectionObserver() {
   sectionObserver?.disconnect();
   if(!('IntersectionObserver' in window))return;
   sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting) document.querySelectorAll('.desktop-nav a').forEach(a=>{if(a.hash===`#${entry.target.id}`)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}),{rootMargin:'-15% 0px -60% 0px'});
-  document.querySelectorAll('#proyectos,#datos,#sobre-mi').forEach(el=>sectionObserver.observe(el));
+  document.querySelectorAll('#inicio,#proyectos,#datos,#sobre-mi,#contacto').forEach(el=>sectionObserver.observe(el));
+}
+
+function setupRevealAnimations() {
+  revealObserver?.disconnect();
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('is-revealed');revealObserver.unobserve(entry.target);}
+  }),{threshold:0.04,rootMargin:'0px 0px 35px 0px'});
+  document.querySelectorAll('.project-case:not(.is-revealed), .data-intro:not(.is-revealed), .about-copy:not(.is-revealed), .method-step:not(.is-revealed), .timeline-item:not(.is-revealed), .education-card:not(.is-revealed)').forEach(element=>{element.classList.add('reveal-target');revealObserver.observe(element);});
 }
 
 function render() {
@@ -110,10 +129,11 @@ function render() {
   document.querySelector('meta[name="description"]').content=t.description;
   document.querySelector('meta[property="og:title"]').content=t.title;
   document.querySelector('meta[property="og:description"]').content=t.description;
-  app.innerHTML=`${header(t)}<main id="main" tabindex="-1">${hero(t)}${projectSection(t)}${dataSection(t)}${aboutSection(t)}${methodSection(t)}${contactSection(t)}</main><dialog id="project-dialog" class="project-dialog" aria-label="${e(t.details)}"></dialog>`;
+  app.innerHTML=`${header(t)}<main id="main" tabindex="-1">${hero(t)}${projectSection(t)}${dataSection(t)}${aboutSection(t)}${careerSection()}${methodSection(t)}${contactSection(t)}</main><dialog id="project-dialog" class="project-dialog" aria-label="${e(t.details)}"></dialog>`;
   document.querySelector('#project-dialog').addEventListener('cancel',event=>{event.preventDefault();closeProject();});
   document.querySelector('#project-dialog').addEventListener('click',event=>{if(event.target===event.currentTarget){const bounds=event.currentTarget.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)closeProject();}});
   setupSectionObserver();
+  setupRevealAnimations();
 }
 
 app.addEventListener('click',event=>{
@@ -130,6 +150,7 @@ app.addEventListener('click',event=>{
     state.category=target.dataset.category;
     document.querySelectorAll('[data-category]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.category===state.category)));
     document.querySelector('#projects-grid').innerHTML=projectCards();
+    setupRevealAnimations();
     const count=document.querySelectorAll('.project-card').length;document.querySelector('#project-status').textContent=state.lang==='es'?`${count} proyectos mostrados`:`${count} projects shown`;
   } else if(target.matches('[data-project]')) openProject(target.dataset.project,target);
   else if(target.matches('[data-close-project]')) closeProject();

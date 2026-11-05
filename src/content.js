@@ -8,7 +8,7 @@ export const profile = {
   github: 'https://github.com/karelina2507-spec',
   email: 'karelina2507@gmail.com', // Public address authorized by the owner.
   linkedin: 'https://www.linkedin.com/in/karelina-fabra-059b60147',
-  cv: { es: null, en: null }, // PENDING: approved PDF file paths, e.g. /assets/cv-es.pdf.
+  cv: { es: '/assets/karelina-fabra-cv-2026.pdf', en: '/assets/karelina-fabra-cv-2026.pdf' }, // Original bilingual CV supplied by the owner.
 };
 
 export const copy = {
@@ -16,9 +16,9 @@ export const copy = {
     title: 'Karelina Fabra · Innovación, automatización & datos',
     description: 'Karelina Fabra — Innovación, automatización y datos. Soluciones empresariales que conectan procesos, tecnología e inteligencia artificial.',
     skip: 'Ir al contenido', nav: ['Proyectos', 'Datos & análisis', 'Sobre mí'], contact: 'Conectemos', menu: 'Abrir navegación', closeMenu: 'Cerrar navegación', language: 'Idioma',
-    eyebrow: 'INNOVACIÓN · AUTOMATIZACIÓN · DATOS', heroLead: 'Conecto procesos,', heroAccent: 'datos e ideas.', heroEnd: 'Construyo soluciones.',
-    heroBody: 'Transformo necesidades de negocio en soluciones digitales, combinando análisis, automatización y desarrollo asistido por IA.',
-    viewProjects: 'Explorar proyectos', viewData: 'Explorar análisis de datos', heroNote: 'Tecnología con contexto. Soluciones con propósito.',
+    eyebrow: 'INNOVACIÓN · AUTOMATIZACIÓN · DATOS', heroLead: 'Conecto negocio,', heroAccent: 'datos e IA.', heroEnd: 'Creo soluciones.',
+    heroBody: 'Transformo necesidades de negocio en aplicaciones, agentes y automatizaciones. Combino experiencia en operaciones fintech, análisis de datos y desarrollo asistido por IA.',
+    heroRole: 'Innovación, automatización e IA aplicada', heroLocation: 'Montevideo, Uruguay', heroStats: [{value:'10+',label:'años en pagos y tecnología'},{value:'8',label:'personas en equipos que lideré'},{value:'4.º',label:'año de Ingeniería en IA · en curso'}], viewProjects: 'Explorar proyectos', viewData: 'Explorar análisis de datos', heroNote: 'Tecnología con contexto. Soluciones con propósito.',
     systemLabel: 'DE LA NECESIDAD A LA SOLUCIÓN', systemTitle: 'Conectar. Entender. Resolver.', systemTags: ['Procesos', 'Datos', 'IA aplicada'], diagramInput: 'Una necesidad de negocio', diagramOutput: 'Una solución que conecta', diagramCaption: 'Una mirada que une negocio y tecnología.',
     ribbon: ['Procesos de negocio', 'Soluciones empresariales', 'Inteligencia artificial', 'Análisis de datos'],
     projectsEyebrow: '01 / PROYECTOS SELECCIONADOS', projectsTitle: 'Del problema a la solución.', projectsBody: 'Proyectos que desarrollé de punta a punta: desde entender la necesidad y definir el proceso hasta construir, integrar y validar la solución.',
@@ -37,9 +37,9 @@ export const copy = {
     chartVolume: 'Volumen y rechazos por hora', chartInfrastructure: 'Tasa de aprobación por infraestructura', chartAlerts: 'Rechazos y operaciones sin respuesta por hora', chartVolumeA11y: 'Datos horarios del ejemplo transaccional', local: 'Local', aws: 'AWS', approved: 'Aprobadas', rejected: 'Rechazadas', hours: 'Hora', total: 'Total', approval: 'Aprobación', viewTable: 'Ver tabla de datos', hideTable: 'Ocultar tabla', resultCount: 'Resultados de la selección', resetFilters: 'Restablecer filtros',
     syntheticInsight: 'LECTURA DEL EJEMPLO', methodsLink: 'Cómo trabajo',
     aboutEyebrow: '03 / SOBRE MÍ', aboutTitle: 'Una mirada de negocio.', aboutAccent: 'Una forma de hacer tecnológica.',
-    aboutP1: 'Soy Karelina Fabra. Mi perfil conecta tecnología, plataformas de pago, operaciones y procesos de negocio con análisis de datos e inteligencia artificial aplicada.',
-    aboutP2: 'Me interesa entender qué necesita una organización y convertirlo en una solución clara: un proceso más ordenado, información útil para decidir o una herramienta que acompañe el trabajo cotidiano.',
-    aboutP3: 'El desarrollo asistido por IA forma parte de esa práctica, junto con la definición de requerimientos, el diseño de procesos, las integraciones y la validación.',
+    aboutP1: 'Soy Karelina Fabra, especialista en innovación y automatización, con más de diez años de experiencia en pagos, redes POS y servicios B2B.',
+    aboutP2: 'Mi trayectoria combina liderazgo de equipos, continuidad de servicios críticos y mejora de procesos con análisis funcional y de datos. Esa experiencia es el contexto desde el que diseño soluciones empresariales.',
+    aboutP3: 'Hoy desarrollo aplicaciones, agentes e integraciones con asistencia de ChatGPT, Codex y Bolt. Curso cuarto año de Ingeniería en Inteligencia Artificial en la Universidad de Palermo, conectando la formación con problemas reales de negocio.',
     aboutCaption: 'NEGOCIO + TECNOLOGÍA + CRITERIO', aboutCallout: 'Entender primero.\nConstruir con propósito.',
     methodEyebrow: '04 / FORMA DE TRABAJO', methodTitle: 'Del contexto a la validación.',
     steps: [
@@ -48,17 +48,17 @@ export const copy = {
       { title: 'Construir', text: 'Desarrollar con asistencia de IA y conectar las piezas mediante integraciones.' },
       { title: 'Validar', text: 'Revisar el comportamiento, contrastar con la necesidad y ajustar con criterio.' },
     ],
-    toolbox: 'Herramientas en mi práctica', tools: [['Elasticsearch & Kibana', 'Consultas, agregaciones y dashboards'], ['Codex & IA', 'Desarrollo asistido y agentes virtuales'], ['Jira & Microsoft Teams', 'Seguimiento, integraciones y alertas'], ['AWS', 'Análisis comparativo de infraestructura']],
-    contactEyebrow: '05 / CONECTEMOS', contactTitle: 'Tu próximo desafío,', contactAccent: 'una nueva solución.', contactBody: 'Para oportunidades laborales y proyectos freelance que conecten negocio, datos y tecnología.', githubCta: 'Encontrame en GitHub', emailCta: 'Escribime', linkedinCta: 'LinkedIn', cvCta: 'Descargar CV', copied: 'Correo copiado',
+    toolbox: 'Herramientas en mi práctica', tools: [['ChatGPT · Codex · Bolt', 'Desarrollo asistido y agentes virtuales'], ['Power Automate · Power Platform', 'Automatización de procesos'], ['React · JavaScript · Node.js', 'Aplicaciones e integraciones'], ['SQL · Elasticsearch · Kibana', 'Datos, consultas y monitoreo'], ['Jira · Microsoft 365', 'Gestión y colaboración'], ['AWS · Azure', 'Conocimientos básicos de nube']],
+    contactEyebrow: '05 / CONECTEMOS', contactTitle: 'Tu próximo desafío,', contactAccent: 'una nueva solución.', contactBody: 'Para oportunidades laborales y proyectos freelance que conecten negocio, datos y tecnología.', githubCta: 'Encontrame en GitHub', emailCta: 'Escribime', linkedinCta: 'LinkedIn', cvCta: 'Descargar CV', cvBilingual: 'CV bilingüe · ES / EN', copied: 'Correo copiado',
     footer: 'Pensado con criterio. Construido con IA.', backTop: 'Volver al inicio', diagramLabels: ['NECESIDAD', 'PROCESO', 'SOLUCIÓN'], emptyProjects: 'No hay proyectos en esta categoría.',
   },
   en: {
     title: 'Karelina Fabra · Innovation, automation & data',
     description: 'Karelina Fabra — Innovation, automation and data. Business solutions connecting processes, technology and artificial intelligence.',
     skip: 'Skip to content', nav: ['Projects', 'Data & analytics', 'About me'], contact: 'Let’s connect', menu: 'Open navigation', closeMenu: 'Close navigation', language: 'Language',
-    eyebrow: 'INNOVATION · AUTOMATION · DATA', heroLead: 'Connecting processes,', heroAccent: 'data and ideas.', heroEnd: 'Building solutions.',
-    heroBody: 'I turn business needs into digital solutions, bringing together analysis, automation and AI-assisted development.',
-    viewProjects: 'Explore projects', viewData: 'Explore data analytics', heroNote: 'Technology with context. Solutions with purpose.',
+    eyebrow: 'INNOVATION · AUTOMATION · DATA', heroLead: 'Connecting business,', heroAccent: 'data and AI.', heroEnd: 'Building solutions.',
+    heroBody: 'I turn business needs into applications, agents and automations. Bringing together fintech operations, data analysis and AI-assisted development.',
+    heroRole: 'Innovation, automation & applied AI', heroLocation: 'Montevideo, Uruguay', heroStats: [{value:'10+',label:'years in payments and technology'},{value:'8',label:'people in teams I have led'},{value:'4th',label:'year of AI Engineering · in progress'}], viewProjects: 'Explore projects', viewData: 'Explore data analytics', heroNote: 'Technology with context. Solutions with purpose.',
     systemLabel: 'FROM BUSINESS NEED TO SOLUTION', systemTitle: 'Connect. Understand. Solve.', systemTags: ['Processes', 'Data', 'Applied AI'], diagramInput: 'A business need', diagramOutput: 'A connected solution', diagramCaption: 'A perspective that brings business and technology together.',
     ribbon: ['Business processes', 'Enterprise solutions', 'Artificial intelligence', 'Data analytics'],
     projectsEyebrow: '01 / SELECTED PROJECTS', projectsTitle: 'From problem to solution.', projectsBody: 'Projects I developed end to end: from understanding the need and defining the process to building, integrating and validating the solution.',
@@ -77,9 +77,9 @@ export const copy = {
     chartVolume: 'Hourly volume and declines', chartInfrastructure: 'Approval rate by infrastructure', chartAlerts: 'Hourly declines and no-response transactions', chartVolumeA11y: 'Hourly sample transaction data', local: 'On-premises', aws: 'AWS', approved: 'Approved', rejected: 'Declined', hours: 'Hour', total: 'Total', approval: 'Approval', viewTable: 'View data table', hideTable: 'Hide table', resultCount: 'Selection results', resetFilters: 'Reset filters',
     syntheticInsight: 'READING THE EXAMPLE', methodsLink: 'How I work',
     aboutEyebrow: '03 / ABOUT ME', aboutTitle: 'A business perspective.', aboutAccent: 'A technology-driven approach.',
-    aboutP1: 'I’m Karelina Fabra. My background connects technology, payment platforms, operations and business processes with data analysis and applied artificial intelligence.',
-    aboutP2: 'I focus on understanding what an organization needs and translating it into a clear solution: a more organized process, useful information for decisions or a tool that supports everyday work.',
-    aboutP3: 'AI-assisted development is part of that practice, alongside requirements definition, process design, integrations and validation.',
+    aboutP1: 'I’m Karelina Fabra, an innovation and automation specialist with more than ten years of experience in payments, POS networks and B2B services.',
+    aboutP2: 'My background combines team leadership, critical service continuity and process improvement with requirements and data analysis. That experience informs how I design business solutions.',
+    aboutP3: 'Today I develop applications, agents and integrations with ChatGPT, Codex and Bolt. I’m in my fourth year of Artificial Intelligence Engineering at Universidad de Palermo, connecting my studies with real business problems.',
     aboutCaption: 'BUSINESS + TECHNOLOGY + JUDGMENT', aboutCallout: 'Understand first.\nBuild with purpose.',
     methodEyebrow: '04 / HOW I WORK', methodTitle: 'From context to validation.',
     steps: [
@@ -88,8 +88,8 @@ export const copy = {
       { title: 'Build', text: 'Develop with AI assistance and connect the pieces through integrations.' },
       { title: 'Validate', text: 'Review behavior, check it against the original need and refine with judgment.' },
     ],
-    toolbox: 'Tools in my practice', tools: [['Elasticsearch & Kibana', 'Queries, aggregations and dashboards'], ['Codex & AI', 'Assisted development and virtual agents'], ['Jira & Microsoft Teams', 'Tracking, integrations and alerts'], ['AWS', 'Infrastructure comparison and analysis']],
-    contactEyebrow: '05 / LET’S CONNECT', contactTitle: 'Your next challenge,', contactAccent: 'a new solution.', contactBody: 'For career opportunities and freelance projects that bring business, data and technology together.', githubCta: 'Find me on GitHub', emailCta: 'Get in touch', linkedinCta: 'LinkedIn', cvCta: 'Download CV', copied: 'Email copied',
+    toolbox: 'Tools in my practice', tools: [['ChatGPT · Codex · Bolt', 'Assisted development and virtual agents'], ['Power Automate · Power Platform', 'Process automation'], ['React · JavaScript · Node.js', 'Applications and integrations'], ['SQL · Elasticsearch · Kibana', 'Data, queries and monitoring'], ['Jira · Microsoft 365', 'Management and collaboration'], ['AWS · Azure', 'Foundational cloud knowledge']],
+    contactEyebrow: '05 / LET’S CONNECT', contactTitle: 'Your next challenge,', contactAccent: 'a new solution.', contactBody: 'For career opportunities and freelance projects that bring business, data and technology together.', githubCta: 'Find me on GitHub', emailCta: 'Get in touch', linkedinCta: 'LinkedIn', cvCta: 'Download CV', cvBilingual: 'Bilingual CV · ES / EN', copied: 'Email copied',
     footer: 'Designed with judgment. Built with AI.', backTop: 'Back to top', diagramLabels: ['NEED', 'PROCESS', 'SOLUTION'], emptyProjects: 'No projects in this category.',
   },
 };

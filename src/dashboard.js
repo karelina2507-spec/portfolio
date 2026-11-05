@@ -2,7 +2,7 @@ import { copy, cases } from './content.js';
 import { escapeHtml, icon } from './ui.js';
 import { filterData, aggregate, hourlyData, infrastructureData, formatNumber, formatPercent, getInsight, initialFilters } from './demo.js';
 
-const statusColors = { approved: '#83a89e', rejected: '#bb654f', noResponse: '#3a515b', reversals: '#d8b76d' };
+const statusColors = { approved: '#a287f6', rejected: '#f28ab5', noResponse: '#69d8f0', reversals: '#edc67e' };
 
 function selectFilter(name, label, options, value) {
   return `<label class="filter-field"><span>${escapeHtml(label)}</span><select data-filter="${name}" name="${name}">${options.map(([key, text]) => `<option value="${key}" ${key === value ? 'selected' : ''}>${escapeHtml(text)}</option>`).join('')}</select></label>`;
@@ -15,7 +15,7 @@ function volumeChart(rows, t, lang) {
   let chart = '';
   for (let tick = 0; tick < 4; tick++) {
     const y = top + chartHeight - tick / 3 * chartHeight;
-    chart += `<line x1="${left}" y1="${y}" x2="${width - 17}" y2="${y}" stroke="#e8ede7"/><text x="${left - 9}" y="${y + 4}" text-anchor="end" class="axis-text">${formatNumber(max * tick / 3, lang)}</text>`;
+    chart += `<line x1="${left}" y1="${y}" x2="${width - 17}" y2="${y}" stroke="#2b2e44"/><text x="${left - 9}" y="${y + 4}" text-anchor="end" class="axis-text">${formatNumber(max * tick / 3, lang)}</text>`;
   }
   rows.forEach((row, i) => {
     let y = top + chartHeight;
@@ -40,7 +40,7 @@ function alertsChart(rows, t, lang) {
   const x = (i) => left + i * chartWidth / Math.max(1, rows.length - 1);
   const y = (value) => top + chartHeight - value / max * chartHeight;
   let chart = '';
-  for (let i = 0; i <= 3; i++) chart += `<line x1="${left}" y1="${y(max * i / 3)}" x2="${width - 17}" y2="${y(max * i / 3)}" stroke="#e8ede7"/><text x="${left - 9}" y="${y(max * i / 3) + 4}" text-anchor="end" class="axis-text">${formatNumber(max * i / 3,lang)}</text>`;
+  for (let i = 0; i <= 3; i++) chart += `<line x1="${left}" y1="${y(max * i / 3)}" x2="${width - 17}" y2="${y(max * i / 3)}" stroke="#2b2e44"/><text x="${left - 9}" y="${y(max * i / 3) + 4}" text-anchor="end" class="axis-text">${formatNumber(max * i / 3,lang)}</text>`;
   for (const key of ['rejected', 'noResponse']) chart += `<polyline points="${rows.map((r,i)=>`${x(i)},${y(r[key])}`).join(' ')}" fill="none" stroke="${statusColors[key]}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>${rows.map((r,i)=>`<circle cx="${x(i)}" cy="${y(r[key])}" r="3" fill="${statusColors[key]}"><title>${r.hour}:00 · ${escapeHtml(key === 'rejected' ? t.rejected : t.noResponse)}: ${formatNumber(r[key],lang)}</title></circle>`).join('')}`;
   rows.forEach((row,i) => { if (i % (rows.length > 12 ? 3 : 2) === 0 || i === rows.length - 1) chart += `<text x="${x(i)}" y="${height-18}" text-anchor="middle" class="axis-text">${String(row.hour).padStart(2,'0')}:00</text>`; });
   return `<svg class="data-chart" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="alerts-chart-title alerts-chart-desc"><title id="alerts-chart-title">${escapeHtml(t.chartAlerts)}</title><desc id="alerts-chart-desc">${escapeHtml(t.demoDisclaimer)} ${escapeHtml(t.viewTable)}.</desc>${chart}</svg>`;

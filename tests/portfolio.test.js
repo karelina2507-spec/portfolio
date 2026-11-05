@@ -3,6 +3,7 @@ import { aggregate, demoData, filterData, hourlyData, infrastructureData, initia
 import { profile, copy, projects, cases } from '../src/content.js';
 import { safeUrl, escapeHtml } from '../src/ui.js';
 import { renderDashboard, normalizeFilters } from '../src/dashboard.js';
+import { career } from '../src/career.js';
 
 // Can run with `node --test tests/portfolio.test.js` or call runChecks() in Node.
 export function runChecks() {
@@ -40,6 +41,8 @@ export function runChecks() {
     assert.equal(cases.es.length,3);assert.equal(cases.en.length,3);
     assert.equal(new Set(projects.map(p=>p.id)).size,6);
     for(const p of projects)assert.deepEqual(Object.keys(p.es).sort(),Object.keys(p.en).sort());
+    assert.deepEqual(Object.keys(career.es).sort(),Object.keys(career.en).sort());
+    assert.equal(career.es.roles.length,career.en.roles.length);
   });
   check('Confirmed ownership and source-reviewed scope preserve unverified outcomes',()=>{
     for(const p of projects){
@@ -53,7 +56,8 @@ export function runChecks() {
     const agh=projects.find(p=>p.id==='portal-agh');assert.ok(agh.es.features.some(feature=>feature.includes('Excel')));assert.ok(agh.es.scopeNote.includes('demostración'));
     const store=projects.find(p=>p.id==='ags-tienda');assert.ok(store.es.scopeNote.includes('No acredita cobros reales'));
     assert.ok(!JSON.stringify(projects).match(/resonet|resonance|ORQD|https:\/\/github\.com\//i));
-    assert.equal(profile.cv.es,null);assert.equal(profile.cv.en,null);
+    assert.equal(profile.cv.es,'/assets/karelina-fabra-cv-2026.pdf');
+    assert.equal(profile.cv.en,profile.cv.es);
   });
   check('Links reject executable, insecure and credential-bearing destinations',()=>{
     for(const url of ['javascript:alert(1)','data:text/html,test','http://example.com','https://user:secret@example.com','//example.com',''])assert.equal(safeUrl(url),null);
