@@ -12,6 +12,12 @@ Revisión realizada el 5 de noviembre de 2026 sobre la vista previa local. La we
 - Navegación, cambio de idioma, filtros del dashboard y comparación local/AWS revisados. Las fichas mantienen el tema oscuro; ficha del portal probada a 375 píxeles sin desbordamiento interno y cierre con Escape correcto.
 - Consola sin errores ni advertencias durante la revisión.
 
+## Idioma inicial
+
+- La URL sin parámetro de idioma abre en inglés, incluso después de haber seleccionado español en una visita anterior.
+- El selector de español cambia el contenido y los metadatos, y conserva la selección con `?lang=es`.
+- El HTML inicial declara `lang="en"` y presenta título, descripción y texto sin JavaScript en inglés.
+
 ## CV, trayectoria y formación
 
 - CV original aportado por Karelina: cuatro páginas, español e inglés en el mismo PDF.
@@ -37,4 +43,13 @@ Las ilustraciones son conceptuales. Los resultados de uso, capturas reales, cobr
 - La demostración conserva reconciliación de estados, 162 combinaciones de filtros y sumas por hora e infraestructura. Todos sus datos son ficticios.
 - Sin enlaces vacíos; repositorios y demos de proyectos sin destino permanecen ocultos.
 
-No se probó un despliegue remoto en Vercel. La configuración y el procedimiento de publicación están en `README.md`.
+## Publicación en Sites
+
+- Sitio publicado: [Karelina Fabra · Portfolio](https://karelina-fabra-portfolio.karelina2507.chatgpt.site/).
+- Despliegue confirmado con estado `succeeded`. Audiencia pública elegida por Karelina y confirmada por Sites.
+- Acceso al contenido comprobado desde una sesión del navegador sin completar el inicio de sesión solicitado durante la publicación privada inicial.
+- Apertura del enlace principal en inglés; selector de español y regreso a inglés comprobados en producción.
+- Vista móvil de 375 píxeles revisada sin desbordamiento horizontal. Consola sin errores.
+- Descarga efectiva del CV desde el sitio publicado. Captura de la portada inglesa guardada en `.qa/portfolio-public-english.png` (excluida de Git).
+
+La web está alojada en Sites. Vercel sigue disponible como alternativa en `README.md`; no se desplegó allí.

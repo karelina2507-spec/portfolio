@@ -8,10 +8,8 @@ import { renderProjectCard, renderProjectDetails } from './project-case.js';
 
 const app = document.querySelector('#app');
 const url = new URL(window.location.href);
-let storedLanguage = null;
-try { storedLanguage = localStorage.getItem('portfolio-language'); } catch { /* Storage may be disabled. */ }
 const state = {
-  lang: [url.searchParams.get('lang'), storedLanguage].find((value) => ['es','en'].includes(value)) || 'es',
+  lang: url.searchParams.get('lang') === 'es' ? 'es' : 'en',
   category: 'all', activeCase: 0, filters: {...initialFilters}, projectId: null,
 };
 let sectionObserver;
@@ -141,7 +139,7 @@ app.addEventListener('click',event=>{
   if(target.matches('[data-language]')) {
     const lang=target.dataset.language;if(lang===state.lang)return;
     const scrollPosition=window.scrollY; const currentProject=state.projectId;
-    state.lang=lang;try{localStorage.setItem('portfolio-language',lang);}catch{/* Preference is optional. */}
+    state.lang=lang;
     const nextUrl=new URL(location.href);nextUrl.searchParams.set('lang',lang);history.replaceState(null,'',nextUrl);
     render();window.scrollTo({top:scrollPosition,behavior:'instant'});
     document.querySelector(`[data-language="${lang}"]`).focus({preventScroll:true});

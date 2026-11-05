@@ -18,9 +18,21 @@ Abrir [http://127.0.0.1:5173](http://127.0.0.1:5173). Si el puerto está ocupado
 - English: `http://127.0.0.1:5173/?lang=en`
 - Ficha enlazable: `http://127.0.0.1:5173/?lang=es&project=ticketera`
 
-El selector conserva la preferencia de idioma en el navegador. El parámetro `lang` tiene prioridad. Las fichas tienen navegación por teclado, cierre con Escape y retorno del foco. Los gráficos incluyen una tabla alternativa.
+El idioma inicial es inglés. El selector conserva la elección en la URL (`?lang=es` o `?lang=en`); sin parámetro, o con uno no reconocido, se muestra inglés. Los metadatos iniciales también están en inglés. Las fichas tienen navegación por teclado, cierre con Escape y retorno del foco. Los gráficos incluyen una tabla alternativa.
 
-## Publicar en Vercel
+## Publicar en Sites
+
+Sitio público: [Karelina Fabra · Portfolio](https://karelina-fabra-portfolio.karelina2507.chatgpt.site/). Abre en inglés por defecto; español sigue disponible en el selector.
+
+El proyecto está vinculado a Sites mediante `.openai/hosting.json`. Ese archivo contiene el identificador del sitio y la carpeta estática `dist`, sin credenciales. Al actualizar, conservar ese identificador y reutilizar el sitio existente.
+
+1. Ejecutar las comprobaciones y generar `dist` con los comandos de la sección Comprobaciones.
+2. Desde Codex con el plugin Sites, solicitar que publique este proyecto en su sitio existente. El flujo de Sites sincroniza el código, guarda una versión del mismo commit y publica su artefacto.
+3. Mantener la audiencia configurada. La visibilidad se gestiona en Sites y no depende de que el repositorio de GitHub sea público.
+
+La web usa archivos estáticos y no requiere Vercel, claves, base de datos ni servicios externos. GitHub conserva el código; Sites proporciona el alojamiento. La carpeta `.qa/sites/` es una copia local aislada para sincronizar con el repositorio de Sites sin cambiar el remoto `origin` de GitHub; está excluida de Git.
+
+## Publicar en Vercel (alternativa)
 
 1. En Vercel, elegir **Add New → Project** e importar `karelina2507-spec/portfolio`.
 2. Seleccionar **Framework Preset: Other** y mantener la raíz del repositorio.
@@ -100,7 +112,7 @@ Las pruebas revisan reconciliación de estados, 162 combinaciones de filtros, ag
 
 ## English
 
-This is Karelina Fabra’s bilingual professional portfolio. Run `python3 scripts/serve.py` for a local preview. Deploy on Vercel with the **Other** preset; `vercel.json` defines the build and `dist` output. No dependencies, credentials or environment variables are required.
+This is Karelina Fabra’s bilingual professional portfolio. English is the default language; use the selector or `?lang=es` for Spanish. Run `python3 scripts/serve.py` for a local preview. The project is linked to Sites through `.openai/hosting.json`; reuse that Site when publishing updates. Vercel remains an alternative with the **Other** preset; `vercel.json` defines the build and `dist` output. No dependencies, credentials or environment variables are required.
 
 General content lives in `src/content.js`; project case studies live in `src/project-stories.js` and are rendered by `src/project-case.js`. Maintain both languages together. Ownership was confirmed by Karelina and capabilities were checked against the original code and documentation through read-only access. A `null` field is unavailable or unverified and is omitted from the public interface. Illustrations are explicitly conceptual. Analytics data is fictional and never connected to live systems. Measured outcomes, real payment processing and email deliveries require separate evidence.
 
