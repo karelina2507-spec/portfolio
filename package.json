@@ -1,0 +1,14 @@
+{
+  "name": "karelina-fabra-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bilingual professional portfolio for Karelina Fabra. Zero runtime dependencies.",
+  "scripts": {
+    "dev": "python3 scripts/serve.py",
+    "start": "python3 scripts/serve.py",
+    "build": "python3 scripts/build.py",
+    "check": "python3 scripts/check.py",
+    "test": "node --test tests/portfolio.test.js"
+  }
+}
