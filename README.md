@@ -34,11 +34,11 @@ Referencia oficial: [Configuración de Vercel](https://vercel.com/docs/project-c
 
 ## Actualizar contenido
 
-Editar `src/content.js`, que contiene:
+Editar `src/content.js` para el perfil y los textos generales, y `src/project-stories.js` para los seis casos de proyecto:
 
 - `profile`: correo, GitHub, LinkedIn y rutas al CV por idioma.
 - `copy.es` / `copy.en`: todo el texto general.
-- `projects`: fichas bilingües, alcance suministrado, tecnologías confirmadas y campos pendientes.
+- `projectStories`: casos bilingües con contexto, usuarios, aporte propio, funcionalidades, módulos, recorrido, criterios, uso de IA, tecnologías y límites de la revisión.
 - `cases.es` / `cases.en`: pregunta, análisis y decisión de los casos de datos.
 
 Un valor `null` significa **no disponible o no verificado**. La interfaz oculta ese campo y cualquier enlace sin destino válido; nunca se debe reemplazar por una función, resultado o tecnología supuesta. `role` y `result` aceptan `{ es: '...', en: '...' }` cuando se confirme el aporte o resultado.
@@ -53,7 +53,9 @@ Para incorporar capturas, añadir a `screenshots` objetos de este formato:
 
 Los campos `repository`, `demo` y `video` aceptan URLs HTTPS verificadas. Las vistas actuales están rotuladas **conceptuales** y no reproducen interfaces reales. Se pueden sustituir en el componente `projectVisual` de `src/ui.js`.
 
-Los detalles por completar están en [PENDIENTES.md](PENDIENTES.md) y en `pending` dentro de cada proyecto. No incluir información confidencial en esos campos: el código del repositorio es público. El portal del colaborador permanece anónimo.
+Los proyectos se presentan como casos desarrollados en la página principal. Las fichas amplían el aporte, los módulos, los criterios de diseño y el uso de IA. El rol de punta a punta fue confirmado por Karelina; las capacidades y tecnologías se contrastaron con código y documentación mediante acceso de lectura. No se consultaron datos productivos y no se publican URLs de repositorios privados.
+
+Los detalles por completar están en [PENDIENTES.md](PENDIENTES.md) y en `pending` dentro de cada caso. No incluir información confidencial en esos campos: el código del repositorio es público. El portal del colaborador permanece anónimo.
 
 ## Componentes y datos
 
@@ -62,6 +64,8 @@ index.html             Documento y metadatos
 assets/styles.css      Diseño responsive, impresión y movimiento reducido
 assets/fonts/          Manrope alojada localmente y su licencia OFL
 src/content.js         Contenido bilingüe y registro de faltantes
+src/project-stories.js  Seis casos bilingües contrastados con código y documentación
+src/project-case.js     Presentación de casos y fichas completas reutilizables
 src/ui.js              Componentes visuales, iconos y validación de enlaces
 src/app.js             Navegación, idioma, categorías y fichas
 src/demo.js            Datos sintéticos, filtros y agregaciones
@@ -92,6 +96,6 @@ Las pruebas revisan reconciliación de estados, 162 combinaciones de filtros, ag
 
 This is Karelina Fabra’s bilingual professional portfolio. Run `python3 scripts/serve.py` for a local preview. Deploy on Vercel with the **Other** preset; `vercel.json` defines the build and `dist` output. No dependencies, credentials or environment variables are required.
 
-All content lives in `src/content.js`. Maintain both languages together. A `null` field is unavailable or unverified and is omitted from the public interface. The six project illustrations are explicitly conceptual. All analytics data is fictional, generated locally, and never connected to live systems. Project-specific contributions, technical stacks, outcomes and agent capabilities must be supported by source material before publication.
+General content lives in `src/content.js`; project case studies live in `src/project-stories.js` and are rendered by `src/project-case.js`. Maintain both languages together. Ownership was confirmed by Karelina and capabilities were checked against the original code and documentation through read-only access. A `null` field is unavailable or unverified and is omitted from the public interface. Illustrations are explicitly conceptual. Analytics data is fictional and never connected to live systems. Measured outcomes, real payment processing and email deliveries require separate evidence.
 
 Font: [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope), licensed under the SIL Open Font License in `assets/fonts/OFL.txt`.

@@ -1,6 +1,8 @@
+import { projectStories } from './project-stories.js';
+
 // All visitor-facing copy lives here. Maintain both languages together.
 // null means unverified or unavailable: components omit those sections and links.
-// Source for project scope: the owner's brief, 5 November 2026. No repositories inspected.
+// Project scope combines owner confirmation and read-only source review; see project-stories.js.
 export const profile = {
   name: 'Karelina Fabra',
   github: 'https://github.com/karelina2507-spec',
@@ -19,11 +21,12 @@ export const copy = {
     viewProjects: 'Explorar proyectos', viewData: 'Explorar análisis de datos', heroNote: 'Tecnología con contexto. Soluciones con propósito.',
     systemLabel: 'DE LA NECESIDAD A LA SOLUCIÓN', systemTitle: 'Conectar. Entender. Resolver.', systemTags: ['Procesos', 'Datos', 'IA aplicada'], diagramInput: 'Una necesidad de negocio', diagramOutput: 'Una solución que conecta', diagramCaption: 'Una mirada que une negocio y tecnología.',
     ribbon: ['Procesos de negocio', 'Soluciones empresariales', 'Inteligencia artificial', 'Análisis de datos'],
-    projectsEyebrow: '01 / PROYECTOS SELECCIONADOS', projectsTitle: 'Del problema a la solución.', projectsBody: 'Sistemas, portales y experiencias digitales pensados alrededor de las personas y sus procesos.',
-    filters: ['Todos', 'Gestión & procesos', 'Comercio digital', 'IA aplicada'], details: 'Explorar proyecto', concept: 'Vista conceptual · no es una captura real', scopeShared: 'Alcance compartido', scopePending: 'Documentación pendiente',
+    projectsEyebrow: '01 / PROYECTOS SELECCIONADOS', projectsTitle: 'Del problema a la solución.', projectsBody: 'Proyectos que desarrollé de punta a punta: desde entender la necesidad y definir el proceso hasta construir, integrar y validar la solución.',
+    filters: ['Todos', 'Gestión & procesos', 'Comercio digital', 'IA aplicada'], details: 'Leer el caso completo', concept: 'Vista conceptual · no es una captura real', scopeShared: 'Funciones contrastadas con el código', scopePending: 'Documentación pendiente',
     projectLabels: { context: 'Contexto y necesidad', users: 'Para quién', role: 'Mi rol y aporte', solution: 'La solución', features: 'Funcionalidades documentadas', technologies: 'Tecnologías confirmadas', ai: 'IA y Codex', result: 'Resultado documentado', media: 'Material del proyecto', purpose: 'Propósito' },
-    close: 'Cerrar ficha', projectNote: 'Ficha basada en el alcance compartido. Las tecnologías, aportes y resultados adicionales se incorporarán con documentación del proyecto.', independentNote: 'Este proyecto tiene su propia ficha. Su alcance se completará a partir del material o repositorio original.',
+    close: 'Cerrar ficha', projectNote: 'Funciones contrastadas con código y documentación. Las vistas son conceptuales y no contienen datos productivos.', independentNote: 'Este proyecto tiene su propia ficha. Su alcance se completará a partir del material o repositorio original.',
     repo: 'Repositorio', demo: 'Ver demo', video: 'Ver video', screenshot: 'Captura del proyecto', nextProject: 'Siguiente proyecto',
+    ownership: 'RESPONSABILIDAD INTEGRAL', ownershipTitle: 'De la necesidad a la validación.', ownershipBody: 'En estos proyectos asumí la definición de requerimientos, el diseño de procesos y de la solución, el desarrollo asistido por IA/Codex, las integraciones y la validación.', roleStages: ['Requerimientos', 'Procesos', 'Desarrollo con IA', 'Integraciones', 'Validación'], challenge: 'La necesidad', whatBuilt: 'Qué construí', value: 'Valor de la solución', workflowLabel: 'El recorrido', caseModules: 'Cómo se organiza la solución', contribution: 'Mi aporte en este caso', decisions: 'Decisiones y criterios', scope: 'Alcance de la revisión', technologies: 'Tecnologías',
     dataEyebrow: '02 / DATOS QUE AYUDAN A DECIDIR', dataTitle: 'Entender lo que pasa.', dataAccent: 'Encontrar el siguiente paso.',
     dataBody: 'Mi trabajo con Elasticsearch y Kibana conecta el comportamiento transaccional con las preguntas de operación: qué cambió, a quién afecta y dónde investigar.',
     dataTags: ['Elasticsearch', 'Kibana', 'Plataformas de pago', 'AWS'], dataCases: ['Rechazos & reversos', 'Infraestructura local vs. AWS', 'Desvíos & alertas'],
@@ -58,11 +61,12 @@ export const copy = {
     viewProjects: 'Explore projects', viewData: 'Explore data analytics', heroNote: 'Technology with context. Solutions with purpose.',
     systemLabel: 'FROM BUSINESS NEED TO SOLUTION', systemTitle: 'Connect. Understand. Solve.', systemTags: ['Processes', 'Data', 'Applied AI'], diagramInput: 'A business need', diagramOutput: 'A connected solution', diagramCaption: 'A perspective that brings business and technology together.',
     ribbon: ['Business processes', 'Enterprise solutions', 'Artificial intelligence', 'Data analytics'],
-    projectsEyebrow: '01 / SELECTED PROJECTS', projectsTitle: 'From problem to solution.', projectsBody: 'Systems, portals and digital experiences built around people and their processes.',
-    filters: ['All', 'Management & processes', 'Digital commerce', 'Applied AI'], details: 'Explore project', concept: 'Conceptual view · not an actual screenshot', scopeShared: 'Shared scope', scopePending: 'Documentation pending',
+    projectsEyebrow: '01 / SELECTED PROJECTS', projectsTitle: 'From problem to solution.', projectsBody: 'Projects I developed end to end: from understanding the need and defining the process to building, integrating and validating the solution.',
+    filters: ['All', 'Management & processes', 'Digital commerce', 'Applied AI'], details: 'Read the full case study', concept: 'Conceptual view · not an actual screenshot', scopeShared: 'Capabilities checked against source', scopePending: 'Documentation pending',
     projectLabels: { context: 'Context and need', users: 'Who it serves', role: 'My role and contribution', solution: 'The solution', features: 'Documented capabilities', technologies: 'Confirmed technologies', ai: 'AI and Codex', result: 'Documented outcome', media: 'Project materials', purpose: 'Purpose' },
-    close: 'Close project', projectNote: 'Based on the shared project scope. Additional technologies, contributions and outcomes will be added when supported by project documentation.', independentNote: 'This project has its own case study. Its scope will be completed using the original materials or repository.',
+    close: 'Close project', projectNote: 'Capabilities checked against source code and documentation. Views are conceptual and contain no production data.', independentNote: 'This project has its own case study. Its scope will be completed using the original materials or repository.',
     repo: 'Repository', demo: 'View demo', video: 'Watch video', screenshot: 'Project screenshot', nextProject: 'Next project',
+    ownership: 'END-TO-END OWNERSHIP', ownershipTitle: 'From need to validation.', ownershipBody: 'In these projects I took responsibility for requirements, process and solution design, AI/Codex-assisted development, integrations and validation.', roleStages: ['Requirements', 'Processes', 'AI-assisted development', 'Integrations', 'Validation'], challenge: 'The need', whatBuilt: 'What I built', value: 'The solution’s value', workflowLabel: 'The journey', caseModules: 'How the solution is organized', contribution: 'My contribution in this case', decisions: 'Decisions and rationale', scope: 'Review scope', technologies: 'Technologies',
     dataEyebrow: '02 / DATA THAT INFORMS DECISIONS', dataTitle: 'Understand what’s happening.', dataAccent: 'Find the next step.',
     dataBody: 'My work with Elasticsearch and Kibana connects transaction patterns with operational questions: what changed, who is affected and where to investigate.',
     dataTags: ['Elasticsearch', 'Kibana', 'Payment platforms', 'AWS'], dataCases: ['Declines & reversals', 'On-premises vs. AWS', 'Anomalies & alerts'],
@@ -90,46 +94,7 @@ export const copy = {
   },
 };
 
-// Evidence is explicit; a null field must never be turned into a public claim.
-const shared = { role: null, result: null, screenshots: [], demo: null, repository: null, video: null };
-export const projects = [
-  {
-    ...shared, id: 'ticketera', category: 'process', visual: 'tickets', technologies: ['Jira'], evidence: 'owner-brief',
-    es: { title: 'Gestión de tickets', category: 'OPERACIONES & TRAZABILIDAD', summary: 'Un punto de encuentro para incidentes, requerimientos y seguimiento operativo.', context: 'Dar seguimiento a incidentes y requerimientos con una visión organizada del trabajo.', users: 'Personas que registran, atienden y supervisan incidentes y requerimientos.', solution: 'Un sistema de gestión con roles, métricas y trazabilidad, integrado con Jira.', features: ['Seguimiento de incidentes y requerimientos', 'Roles y permisos', 'Métricas y trazabilidad', 'Integración con Jira'], ai: null, purpose: 'Organizar el seguimiento operativo y la información de cada caso.' },
-    en: { title: 'Ticket management', category: 'OPERATIONS & TRACEABILITY', summary: 'A shared space for incidents, requests and operational follow-up.', context: 'Track incidents and requests with an organized view of the work.', users: 'People who log, handle and oversee incidents and requests.', solution: 'A management system with roles, metrics and traceability, integrated with Jira.', features: ['Incident and request tracking', 'Roles and permissions', 'Metrics and traceability', 'Jira integration'], ai: null, purpose: 'Organize operational follow-up and the information associated with each case.' },
-    pending: ['Rol y aportes específicos', 'Stack técnico', 'Uso concreto de IA/Codex', 'Estado de implementación de cada función en el repositorio', 'Resultados verificables', 'Capturas y enlaces autorizados'],
-  },
-  {
-    ...shared, id: 'ags-comercial', category: 'process', visual: 'commercial', technologies: [], evidence: 'owner-brief',
-    es: { title: 'Gestión comercial', category: 'AGS URUGUAY · GESTIÓN', summary: 'Pedidos, precios y comisiones conectados con el seguimiento comercial.', context: 'Reunir la gestión de pedidos, precios y comisiones en un flujo comercial.', users: 'Personas involucradas en la gestión y el seguimiento comercial de AGS Uruguay.', solution: 'Un sistema de gestión comercial centrado en pedidos, precios, comisiones y seguimiento.', features: ['Gestión de pedidos', 'Gestión de precios', 'Comisiones', 'Seguimiento comercial'], ai: null, purpose: 'Acompañar el proceso comercial con información organizada.' },
-    en: { title: 'Commercial management', category: 'AGS URUGUAY · MANAGEMENT', summary: 'Orders, pricing and commissions connected with commercial follow-up.', context: 'Bring order, pricing and commission management into a commercial workflow.', users: 'People involved in commercial management and follow-up at AGS Uruguay.', solution: 'A commercial management system focused on orders, pricing, commissions and follow-up.', features: ['Order management', 'Pricing management', 'Commissions', 'Commercial follow-up'], ai: null, purpose: 'Support the commercial process with organized information.' },
-    pending: ['Rol y aportes específicos', 'Stack técnico', 'Uso concreto de IA/Codex', 'Evidencia de implementación', 'Resultados verificables', 'Capturas y enlaces autorizados'],
-  },
-  {
-    ...shared, id: 'ags-tienda', category: 'commerce', visual: 'store', technologies: [], evidence: 'owner-brief',
-    es: { title: 'Tienda digital', category: 'AGS URUGUAY · E-COMMERCE', summary: 'Una presentación de productos que abre un canal de ventas digital.', context: 'Llevar la presentación de productos de AGS Uruguay a un canal digital.', users: 'Personas interesadas en conocer los productos de AGS Uruguay.', solution: 'Una tienda y experiencia de comercio electrónico para la presentación de productos y el canal de ventas digital.', features: ['Presentación de productos', 'Canal de ventas digital'], ai: null, purpose: 'Acercar la oferta de productos a través de una experiencia digital.' },
-    en: { title: 'Digital storefront', category: 'AGS URUGUAY · E-COMMERCE', summary: 'A product showcase that opens a digital sales channel.', context: 'Bring AGS Uruguay’s product presentation to a digital channel.', users: 'People interested in discovering AGS Uruguay’s products.', solution: 'A storefront and e-commerce experience for product presentation and digital sales.', features: ['Product presentation', 'Digital sales channel'], ai: null, purpose: 'Make the product offering accessible through a digital experience.' },
-    pending: ['Productos y material visual autorizado', 'Flujo de compra verificado; no asumir carrito, checkout ni pagos', 'Rol y stack técnico', 'Uso concreto de IA/Codex', 'Resultados y enlaces'],
-  },
-  {
-    ...shared, id: 'portal-colaborador', category: 'process', visual: 'portal', technologies: [], evidence: 'owner-brief',
-    es: { title: 'Portal del colaborador', category: 'PERSONAS & PROCESOS', summary: 'Solicitudes, licencias y aprobaciones con visibilidad para cada perfil.', context: 'Organizar solicitudes y licencias, con seguimiento de estados y aprobaciones.', users: 'Colaboradores y personas que participan en los circuitos de aprobación.', solution: 'Un portal con solicitudes, licencias, aprobaciones, consulta de estados y permisos por perfil.', features: ['Solicitudes y licencias', 'Circuitos de aprobación', 'Consulta de estados', 'Permisos por perfil'], ai: null, purpose: 'Dar visibilidad a los procesos internos desde un espacio compartido.' },
-    en: { title: 'Employee portal', category: 'PEOPLE & PROCESSES', summary: 'Requests, leave and approvals with visibility for each role.', context: 'Organize requests and leave, with status tracking and approvals.', users: 'Employees and people involved in approval workflows.', solution: 'A portal with requests, leave, approvals, status queries and profile-based permissions.', features: ['Requests and leave', 'Approval workflows', 'Status queries', 'Profile-based permissions'], ai: null, purpose: 'Provide visibility into internal processes through a shared space.' },
-    pending: ['Mantener anonimato de la empresa en texto, capturas y archivos', 'Rol y aportes específicos', 'Stack técnico y uso de IA/Codex', 'Resultados y material visual sanitizado'],
-  },
-  {
-    ...shared, id: 'portal-agh', category: 'process', visual: 'agh', technologies: [], evidence: 'pending-material',
-    es: { title: 'Portal de AGH', category: 'PROYECTO INDEPENDIENTE', summary: 'Un proyecto con identidad propia. Su alcance se documentará a partir del material original.', context: null, users: null, solution: null, features: [], ai: null, purpose: null },
-    en: { title: 'AGH portal', category: 'INDEPENDENT PROJECT', summary: 'A project with its own identity. Its scope will be documented using the original materials.', context: null, users: null, solution: null, features: [], ai: null, purpose: null },
-    pending: ['Repositorio o documentación original', 'Contexto, usuarios y funcionalidades', 'Rol y aportes', 'Stack técnico y uso de IA/Codex', 'Resultados verificables', 'Capturas y enlaces autorizados'],
-  },
-  {
-    ...shared, id: 'agentes', category: 'ai', visual: 'agents', technologies: ['Codex'], evidence: 'partial-owner-brief',
-    es: { title: 'Agentes virtuales con Codex', category: 'IA APLICADA', summary: 'Agentes desarrollados para la ticketera y el portal empresarial.', context: 'Aplicar agentes virtuales en el contexto de la ticketera y el portal empresarial.', users: null, solution: 'Agentes virtuales desarrollados con Codex para estos dos entornos.', features: [], ai: 'Codex se utilizó para desarrollar los agentes. Sus consultas, acciones, permisos e integraciones se detallarán cuando se verifique la implementación.', purpose: null },
-    en: { title: 'Virtual agents with Codex', category: 'APPLIED AI', summary: 'Agents developed for the ticketing system and enterprise portal.', context: 'Apply virtual agents within the ticketing system and enterprise portal.', users: null, solution: 'Virtual agents developed with Codex for these two environments.', features: [], ai: 'Codex was used to develop the agents. Their queries, actions, permissions and integrations will be detailed once the implementation has been verified.', purpose: null },
-    pending: ['Verificar propósito y usuarios de cada agente', 'Consultas y acciones realmente disponibles', 'Integraciones, permisos y límites', 'Evidencia del repositorio y flujo real', 'Aporte específico y resultados', 'Demostraciones sanitizadas'],
-  },
-];
+export const projects = projectStories;
 
 export const cases = {
   es: [

@@ -3720,6 +3720,216 @@ dialog {
   }
 }
 
+/* Project narratives: functional scope and personal contribution are visible
+   on the main page; the dialog adds modules, rationale and review scope. */
+.ownership-banner {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 40px;
+  margin-top: 30px;
+  padding: 25px 28px;
+  border: 1px solid #d3ddc8;
+  border-radius: 9px;
+  background: #edf2e5;
+}
+.ownership-banner h3 { font-size: 22px; margin-top: 8px; }
+.ownership-banner p { font-size: 12px; line-height: 1.9; color: #5c7051; }
+.role-stage-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.role-stage-chips span { font-size: 9px; padding: 4px 7px; border: 1px solid #d1dcc4; border-radius: 4px; color: #627454; }
+.projects-grid.project-cases { grid-template-columns: 1fr; gap: 0; }
+.project-card.project-case {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 58px;
+  padding: 43px 0 48px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+}
+.project-card.project-case:hover { transform: none; box-shadow: none; }
+.project-case-visual { position: sticky; top: 115px; align-self: start; }
+.project-case:nth-child(even) .project-case-visual { order: 2; }
+.project-case:nth-child(even) .project-case-content { order: 1; }
+.project-case p { min-height: 0; margin: 0; }
+.project-case-number { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 16px; }
+.project-case-number span { font-size: 8px; letter-spacing: .08em; color: #7c896f; font-weight: 700; }
+.project-case-number .icon { width: 17px; height: 17px; color: #8d9b7f; }
+.project-case .project-visual { border: 1px solid #dae2d2; border-radius: 11px; }
+.project-case .visual-art { height: 255px; padding: 35px 27px 0; }
+.project-case .mini-main, .project-case .mini-sidebar { height: 250px; }
+.project-case .mini-main { padding: 20px 15px; }
+.project-case .mini-sidebar { min-width: 39px; padding-top: 21px; gap: 20px; }
+.project-case .mini-heading b { font-size: 11px; }
+.project-case .mini-heading b > span { font-size: 5px; }
+.project-case .kanban { margin-top: 22px; gap: 7px; }
+.project-case .kanban-column > small { font-size: 7px; }
+.mini-ticket b { font-size: 8px; font-weight: 700; letter-spacing: -.02em; }
+.mini-ticket > small { font-size: 7px; color: #88927e; }
+.mini-ticket .mini-text-pill { display: inline-block; font-size: 6px; padding: 2px 6px; border-radius: 3px; background: #e2ecd5; color: #6c845c; align-self: flex-start; margin-top: 3px; }
+.project-case .mini-ticket { min-height: 87px; padding: 12px 8px; gap: 8px; }
+.mini-bottom-label { margin-top: 20px; padding-top: 12px; border-top: 1px solid #edf0e6; font-size: 8px; color: #819074; }
+.project-case .commercial-head { font-size: 10px; margin-top: 23px; }
+.project-case .mini-table-head, .project-case .mini-table-row { font-size: 7px; padding-block: 12px; }
+.project-case .store-main { height: 250px; padding: 20px; }
+.project-case .store-heading { font-size: 19px; }
+.project-case .product-previews { margin-top: 21px; }
+.project-case .product-object { height: 75px; }
+.mini-product-label { font-size: 7px; font-weight: 500; color: #8d7c67; margin-top: 3px; }
+.project-case .portal-greeting { font-size: 16px; margin-top: 21px; }
+.project-case .portal-options { margin-top: 18px; }
+.project-case .portal-options > div { padding: 13px 7px; }
+.project-case .portal-options small { font-size: 7px; }
+.mini-state-line { font-size: 7px; color: #8a8ca0; }
+.project-case .visual-agh .visual-art { padding: 35px 27px 0; }
+.visual-agh .mini-sidebar { background: #976f7e; }
+.visual-agh .portal-options > div { background: #faf5f6; border-color: #eee3e8; }
+.visual-agh .portal-options .icon { color: #a08091; }
+.project-case .visual-agents .visual-art { padding: 0; }
+.project-case .agent-node { width: 83px; height: 75px; }
+.project-case .agent-node > span { font-size: 9px; }
+.project-case .agent-center { width: 90px; height: 94px; }
+.project-case .agent-center b { font-size: 12px; }
+.project-case .project-visual figcaption { font-size: 8px; padding: 9px 12px; }
+.project-case-content > .eyebrow { font-size: 8px; }
+.project-case-content > h3 { font-size: 30px; margin-top: 10px; line-height: 1.25; }
+.project-case-content > .project-case-summary { font-size: 13px; margin-top: 16px; line-height: 1.9; color: #55674e; }
+.case-ownership { padding: 15px 17px; margin-top: 20px; border-left: 2px solid #8ba46c; background: #eef2e8; }
+.case-ownership > span { display: flex; align-items: center; gap: 7px; font-size: 9px; font-weight: 700; color: #617a50; }
+.case-ownership > span .icon { width: 13px; height: 13px; }
+.case-ownership > p { font-size: 12px; color: #48603f; line-height: 1.8; margin-top: 7px; }
+.project-case-need, .project-case-features, .project-case-value { margin-top: 20px; }
+.project-case h4 { font-size: 11px; letter-spacing: -.01em; font-weight: 700; }
+.project-case-need > p, .project-case-value > p { font-size: 12px; line-height: 1.95; margin-top: 8px; }
+.project-case-features > ul { list-style: none; margin: 11px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 9px 18px; }
+.project-case-features li { display: flex; align-items: flex-start; gap: 7px; font-size: 10px; line-height: 1.7; color: #64745b; }
+.project-case-features .icon { height: 13px; width: 13px; margin-top: 3px; color: #88a271; }
+.project-case-content > .tool-chips { margin-top: 20px; }
+.project-case-content > .tool-chips > span { font-size: 8px; }
+.project-case-open { margin-top: 22px; font-size: 11px; padding: 12px 17px; gap: 16px; }
+.project-workflow { padding: 22px 0 0; }
+.project-workflow > h4 { font-size: 9px; text-transform: uppercase; letter-spacing: .08em; color: #8b967f; }
+.project-workflow > ol { list-style: none; padding: 0; margin: 15px 0 0; }
+.project-workflow li { display: flex; align-items: center; gap: 12px; padding-block: 11px; border-bottom: 1px solid #e3e8dc; }
+.project-workflow li > span { font-size: 9px; color: #a0aa96; font-weight: 600; }
+.project-workflow li > p { margin: 0; font-size: 11px; color: #68795e; line-height: 1.7; }
+.project-workflow li > .icon { width: 12px; height: 12px; color: #91a27e; margin-left: auto; transform: rotate(90deg); }
+.project-workflow li:last-child > .icon { transform: none; }
+.case-detail-ownership { background: #eaf0e0; border: 1px solid #d8e2c9; border-radius: 7px; padding: 20px; margin-bottom: 28px; }
+.case-detail-ownership > p { font-size: 13px; color: #526a42; line-height: 1.9; margin-top: 10px; }
+.case-module-list { margin-top: 16px; }
+.case-module-list article { display: flex; gap: 15px; padding: 17px 0; border-bottom: 1px solid var(--line); }
+.case-module-list article > span { color: #93a47e; font-size: 10px; padding-top: 3px; }
+.case-module-list h4 { font-size: 13px; letter-spacing: -.02em; }
+.case-module-list p { font-size: 12px; }
+.case-detail-list { list-style: none; padding: 0; display: grid; gap: 12px; margin: 15px 0 0; }
+.case-detail-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 12px; line-height: 1.9; color: #66745c; }
+.case-detail-list .icon { width: 14px; height: 14px; margin-top: 4px; color: #8a9e70; }
+.project-detail-body > .project-workflow { margin-top: 22px; margin-bottom: 28px; }
+.project-evidence-note > strong { font-size: 10px; font-weight: 700; }
+.project-evidence-note > p { margin-top: 5px; font-size: 10px; color: inherit; line-height: 1.9; }
+.project-dialog .mini-ticket b { font-size: 10px; }
+.project-dialog .mini-ticket > small { font-size: 8px; }
+.project-dialog .mini-text-pill { font-size: 8px; }
+.project-dialog .mini-bottom-label, .project-dialog .mini-state-line { font-size: 9px; }
+.project-dialog .mini-product-label { font-size: 9px; }
+.project-dialog .visual-agh .visual-art { padding: 25px 12% 0; }
+@media (max-width: 1100px) {
+  .project-card.project-case { gap: 35px; }
+  .project-case-content > h3 { font-size: 27px; }
+  .project-case .mini-heading b { font-size: 9px; }
+  .project-case .mini-heading b > span { font-size: 4px; }
+  .project-case .visual-art, .project-case .visual-agh .visual-art { padding-inline: 18px; height: 230px; }
+  .project-case .mini-main { padding: 16px 11px; }
+  .project-case .mini-sidebar { min-width: 29px; }
+  .project-case .kanban-column > small { font-size: 5px; }
+  .project-case .mini-ticket { padding-inline: 5px; }
+  .project-case .mini-ticket b { font-size: 6px; }
+  .project-case .mini-ticket > small { font-size: 5px; }
+  .project-case .portal-greeting { font-size: 13px; }
+  .project-case .portal-options small { font-size: 6px; }
+  .project-case-features > ul { grid-template-columns: 1fr; gap: 7px; }
+  .project-case .mini-table-head, .project-case .mini-table-row { font-size: 6px; gap: 6px; }
+  .project-case .agent-node { width: 65px; height: 63px; }
+  .project-case .agent-node > span { font-size: 7px; }
+  .project-case .agent-center { width: 75px; height: 80px; }
+}
+@media (max-width: 850px) {
+  .ownership-banner { grid-template-columns: 1fr; gap: 15px; }
+  .project-card.project-case { grid-template-columns: .85fr 1.15fr; gap: 25px; }
+  .project-case .visual-art, .project-case .visual-agh .visual-art { height: 205px; padding: 25px 12px 0; }
+  .project-case-content > h3 { font-size: 25px; }
+  .project-case-content > .project-case-summary, .case-ownership > p, .project-case-need > p, .project-case-value > p { font-size: 11px; }
+  .project-case .mini-heading b { font-size: 8px; }
+  .project-case .mini-heading b > span { display: none; }
+  .project-case .mini-main { padding: 15px 9px; }
+  .project-case .mini-sidebar { min-width: 25px; }
+  .project-case .kanban { gap: 4px; }
+  .project-case .mini-ticket { padding: 9px 4px; min-height: 75px; }
+  .project-case .mini-bottom-label { font-size: 6px; }
+  .project-case .portal-greeting { font-size: 11px; }
+  .project-case .portal-options { gap: 5px; }
+  .project-case .portal-options > div { padding: 10px 4px; }
+  .project-case .portal-options small, .project-case .mini-state-line { font-size: 5px; }
+  .project-case .store-main { padding: 15px 12px; }
+  .project-case .store-heading { font-size: 15px; }
+  .project-case .product-object { height: 52px; }
+  .project-case .mini-product-label { font-size: 6px; }
+  .project-case .commercial-head { font-size: 8px; }
+  .project-case .mini-table-head, .project-case .mini-table-row { font-size: 5px; }
+  .project-case .agent-node { width: 54px; height: 57px; }
+  .project-case .agent-left { left: 5%; }
+  .project-case .agent-right { right: 5%; }
+  .project-case .agent-center { width: 66px; height: 72px; }
+}
+@media (max-width: 600px) {
+  .ownership-banner { padding: 21px; gap: 13px; margin-top: 25px; }
+  .ownership-banner h3 { font-size: 23px; }
+  .ownership-banner p { font-size: 11px; }
+  .role-stage-chips { gap: 6px; }
+  .role-stage-chips span { font-size: 8px; }
+  .project-card.project-case { grid-template-columns: 1fr; gap: 25px; padding-block: 31px 38px; }
+  .project-case .project-case-visual, .project-case:nth-child(even) .project-case-visual { position: static; order: 2; }
+  .project-case .project-case-content, .project-case:nth-child(even) .project-case-content { order: 1; }
+  .project-case-number { margin-bottom: 13px; }
+  .project-case-number span { font-size: 7px; }
+  .project-case .visual-art, .project-case .visual-agh .visual-art { height: 220px; padding: 28px 20px 0; }
+  .project-case .mini-main { padding: 17px 12px; }
+  .project-case .mini-sidebar { min-width: 31px; }
+  .project-case .mini-heading b { font-size: 9px; }
+  .project-case .mini-heading b > span { display: initial; font-size: 4px; }
+  .project-case .mini-ticket b { font-size: 7px; }
+  .project-case .mini-ticket > small { font-size: 6px; }
+  .project-case .kanban-column > small { font-size: 6px; }
+  .project-case .mini-bottom-label { font-size: 7px; }
+  .project-case .portal-greeting { font-size: 13px; }
+  .project-case .portal-options > div { padding: 12px 6px; }
+  .project-case .portal-options small, .project-case .mini-state-line { font-size: 6px; }
+  .project-case .mini-table-head, .project-case .mini-table-row { font-size: 6px; }
+  .project-case .store-main { padding: 17px; }
+  .project-case .store-heading { font-size: 18px; }
+  .project-case .product-object { height: 63px; }
+  .project-case .mini-product-label { font-size: 7px; }
+  .project-case-content > h3 { font-size: 28px; }
+  .project-case-content > .project-case-summary { font-size: 13px; }
+  .case-ownership > p, .project-case-need > p, .project-case-value > p { font-size: 12px; }
+  .project-case-features > ul { grid-template-columns: 1fr; gap: 9px; }
+  .project-case-features li { font-size: 11px; }
+  .project-case .agent-node { width: 65px; height: 64px; }
+  .project-case .agent-left { left: 9%; }
+  .project-case .agent-right { right: 9%; }
+  .project-case .agent-center { width: 75px; height: 80px; }
+  .project-workflow { padding-top: 18px; }
+  .project-workflow li { padding-block: 8px; }
+  .project-workflow li > p { font-size: 10px; }
+  .project-dialog .visual-agh .visual-art { padding: 25px 15px 0; }
+  .project-dialog .mini-ticket b { font-size: 7px; }
+  .project-dialog .mini-ticket > small { font-size: 6px; }
+  .project-dialog .mini-bottom-label, .project-dialog .mini-state-line { font-size: 6px; }
+  .case-detail-ownership { padding: 16px; }
+  .case-detail-ownership > p, .case-detail-list li, .case-module-list p { font-size: 11px; }
+}
 @media print {
   .site-header,.hero-system,.expertise-ribbon,.project-filters,.project-visual,.case-tabs,.dashboard,.about-visual,.section-index,.back-top,.project-dialog,.hero-actions,.hero-note {
     display:none!important

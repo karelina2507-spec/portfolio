@@ -2,6 +2,7 @@ import { profile, copy, projects } from './content.js';
 import { escapeHtml as e, icon, safeUrl, externalLink, projectVisual, sectionHeading } from './ui.js';
 import { initialFilters } from './demo.js';
 import { renderCase, renderDashboard } from './dashboard.js';
+import { renderProjectCard, renderProjectDetails } from './project-case.js';
 
 const app = document.querySelector('#app');
 const url = new URL(window.location.href);
@@ -25,14 +26,11 @@ function hero(t) {
 function projectCards() {
   const t=copy[state.lang];
   const filtered = projects.filter(p=>state.category==='all'||p.category===state.category);
-  return filtered.map(p=>{
-    const c=p[state.lang];
-    return `<article class="project-card"><button class="project-open" data-project="${p.id}" aria-label="${e(t.details)}: ${e(c.title)}">${projectVisual(p,state.lang,t.concept)}<div class="project-card-content"><div class="project-card-topline"><span>${e(c.category)}</span>${icon('diagonal')}</div><h3>${e(c.title)}</h3><p>${e(c.summary)}</p><span class="project-detail-link">${t.details}${icon('arrow')}</span></div></button></article>`;
-  }).join('') || `<p>${t.emptyProjects}</p>`;
+  return filtered.map((project,index)=>renderProjectCard(project,state.lang,index)).join('') || `<p>${t.emptyProjects}</p>`;
 }
 
 function projectSection(t) {
-  return `<section id="proyectos" class="section container" aria-labelledby="projects-title"><div class="projects-intro">${sectionHeading(t.projectsEyebrow,t.projectsTitle,t.projectsBody,'projects-title')}<span class="section-index" aria-hidden="true">↘</span></div><div class="project-filters" role="group" aria-label="${state.lang==='es'?'Categorías de proyectos':'Project categories'}">${['all','process','commerce','ai'].map((cat,i)=>`<button data-category="${cat}" aria-pressed="${state.category===cat}">${t.filters[i]}${cat==='all'?'<span>06</span>':''}</button>`).join('')}</div><div class="projects-grid" id="projects-grid">${projectCards()}</div><p id="project-status" class="sr-only" aria-live="polite"></p></section>`;
+  return `<section id="proyectos" class="section container" aria-labelledby="projects-title"><div class="projects-intro">${sectionHeading(t.projectsEyebrow,t.projectsTitle,t.projectsBody,'projects-title')}<span class="section-index" aria-hidden="true">↘</span></div><div class="ownership-banner"><div><span class="eyebrow">${t.ownership}</span><h3>${t.ownershipTitle}</h3></div><div><p>${t.ownershipBody}</p><div class="role-stage-chips">${t.roleStages.map(stage=>`<span>${e(stage)}</span>`).join('')}</div></div></div><div class="project-filters" role="group" aria-label="${state.lang==='es'?'Categorías de proyectos':'Project categories'}">${['all','process','commerce','ai'].map((cat,i)=>`<button data-category="${cat}" aria-pressed="${state.category===cat}">${t.filters[i]}${cat==='all'?'<span>06</span>':''}</button>`).join('')}</div><div class="projects-grid project-cases" id="projects-grid">${projectCards()}</div><p id="project-status" class="sr-only" aria-live="polite"></p></section>`;
 }
 
 function dataSection(t) {
@@ -53,12 +51,6 @@ function contactSection(t) {
   return `<section id="contacto" class="contact-section section" aria-labelledby="contact-title"><div class="container contact-inner"><div><p class="eyebrow">${t.contactEyebrow}</p><h2 id="contact-title">${t.contactTitle}<br><span>${t.contactAccent}</span></h2><p>${t.contactBody}</p></div><div class="contact-actions">${email?`<a class="contact-email" href="${e(email)}">${e(profile.email)}${icon('diagonal')}</a>`:''}<div class="contact-socials">${externalLink(profile.github,t.githubCta,'social-link','github')}${externalLink(profile.linkedin,t.linkedinCta,'social-link','linkedin')}${cv?`<a class="social-link cv-link" href="${e(cv)}" download>${t.cvCta}${icon('download')}</a>`:''}</div></div></div></section><footer class="site-footer"><div class="container"><a class="footer-brand" href="#inicio">Karelina Fabra<span>© ${new Date().getFullYear()}</span></a><p>${t.footer}</p><a href="#inicio" class="back-top">${t.backTop}${icon('arrow')}</a></div></footer>`;
 }
 
-function projectModalContent(project) {
-  const t=copy[state.lang], c=project[state.lang];
-  const detail=(label,value)=> value?`<section class="project-detail-section"><h3>${e(label)}</h3><p>${e(value)}</p></section>`:'';
-  const links=[externalLink(project.repository,t.repo,'button button-outline','github'),externalLink(project.demo,t.demo,'button button-outline'),externalLink(project.video,t.video,'button button-outline')].filter(Boolean);
-  return `<div class="modal-topbar"><span>${e(c.category)}</span><button class="modal-close" aria-label="${t.close}" data-close-project>${icon('close')}</button></div><div class="modal-intro"><span class="eyebrow">${project.evidence==='pending-material'?t.scopePending:t.scopeShared}</span><h2 id="project-dialog-title">${e(c.title)}</h2><p>${e(c.summary)}</p></div>${projectVisual(project,state.lang,t.concept)}<div class="project-detail-body">${detail(t.projectLabels.context,c.context)}${detail(t.projectLabels.users,c.users)}${detail(t.projectLabels.role,project.role?.[state.lang])}${detail(t.projectLabels.solution,c.solution)}${c.features.length?`<section class="project-detail-section"><h3>${t.projectLabels.features}</h3><ul class="feature-list">${c.features.map(feature=>`<li>${icon('check')}${e(feature)}</li>`).join('')}</ul></section>`:''}${project.technologies.length?`<section class="project-detail-section"><h3>${t.projectLabels.technologies}</h3><div class="tool-chips">${project.technologies.map(tech=>`<span>${e(tech)}</span>`).join('')}</div></section>`:''}${detail(t.projectLabels.ai,c.ai)}${detail(t.projectLabels.result,project.result?.[state.lang])}${detail(t.projectLabels.purpose,c.purpose)}${project.screenshots.length?`<section class="project-detail-section"><h3>${t.projectLabels.media}</h3>${project.screenshots.map(shot=>{const src=safeUrl(shot.src,{local:true});return src?`<img class="project-screenshot" src="${e(src)}" alt="${e(shot.alt[state.lang])}" loading="lazy">`:'';}).join('')}</section>`:''}${links.length?`<div class="project-modal-links">${links.join('')}</div>`:''}<p class="project-evidence-note">${project.evidence==='pending-material'?t.independentNote:t.projectNote}</p><button class="text-link next-project" data-next-project>${t.nextProject}${icon('arrow')}</button></div>`;
-}
 
 function openProject(id, trigger) {
   const project=projects.find(p=>p.id===id);
@@ -66,7 +58,7 @@ function openProject(id, trigger) {
   const dialog=document.querySelector('#project-dialog');
   state.projectId=id;
   lastProjectTrigger=trigger||lastProjectTrigger;
-  dialog.innerHTML=projectModalContent(project);
+  dialog.innerHTML=renderProjectDetails(project,state.lang);
   dialog.setAttribute('aria-labelledby','project-dialog-title');
   dialog.showModal();
   dialog.scrollTop=0;

@@ -41,9 +41,18 @@ export function runChecks() {
     assert.equal(new Set(projects.map(p=>p.id)).size,6);
     for(const p of projects)assert.deepEqual(Object.keys(p.es).sort(),Object.keys(p.en).sort());
   });
-  check('Unknown claims and CV stay absent, AGH has no inferred capabilities',()=>{
-    for(const p of projects){assert.equal(p.role,null);assert.equal(p.result,null);assert.equal(p.repository,null);assert.equal(p.demo,null);}
-    const agh=projects.find(p=>p.id==='portal-agh');assert.deepEqual(agh.es.features,[]);assert.deepEqual(agh.en.features,[]);assert.equal(agh.es.solution,null);
+  check('Confirmed ownership and source-reviewed scope preserve unverified outcomes',()=>{
+    for(const p of projects){
+      assert.ok(p.role.es.includes('punta a punta'));assert.ok(p.role.en.includes('end to end'));
+      assert.equal(p.evidence,'source-reviewed');assert.equal(p.result,null);assert.equal(p.repository,null);assert.equal(p.demo,null);
+      for(const lang of ['es','en']){
+        assert.ok(p[lang].context.length>150);assert.ok(p[lang].roleSummary.length>40);
+        assert.equal(p[lang].modules.length,3);assert.equal(p[lang].workflow.length,4);assert.ok(p[lang].features.length>=6);
+      }
+    }
+    const agh=projects.find(p=>p.id==='portal-agh');assert.ok(agh.es.features.some(feature=>feature.includes('Excel')));assert.ok(agh.es.scopeNote.includes('demostración'));
+    const store=projects.find(p=>p.id==='ags-tienda');assert.ok(store.es.scopeNote.includes('No acredita cobros reales'));
+    assert.ok(!JSON.stringify(projects).match(/resonet|resonance|ORQD|https:\/\/github\.com\//i));
     assert.equal(profile.cv.es,null);assert.equal(profile.cv.en,null);
   });
   check('Links reject executable, insecure and credential-bearing destinations',()=>{

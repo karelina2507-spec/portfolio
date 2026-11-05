@@ -24,6 +24,23 @@ Revisión realizada el 5 de noviembre de 2026 sobre la vista previa local. Sin s
 - Anchos revisados: 320, 375, 768 y 1366 píxeles, sin desbordamiento horizontal de la página.
 - Consola del navegador: sin errores ni advertencias durante la revisión funcional.
 
+## Ampliación de los casos de proyecto
+
+Después de la primera versión se revisaron, exclusivamente mediante lectura, el código y la documentación de las cinco implementaciones originales. Karelina confirmó su responsabilidad de punta a punta en todos los proyectos. Las seis historias ahora incluyen necesidad, usuarios, aporte propio, funcionalidades, tres módulos, recorrido, criterios, tecnologías y uso de IA.
+
+- Ticketera: flujos de tickets, SLA, historial, Jira, Teams y alertas Elastic.
+- Sistema comercial: pedidos y ventas, precios B2B, comisiones, filtros y reportes.
+- Tienda: catálogo, variantes, carrito y flujo de checkout. Las llamadas del frontend a pagos no se consideran prueba de cobros reales.
+- Portal del colaborador: solicitudes, licencias, aprobaciones, perfiles y onboarding, con presentación anónima.
+- AGH: directorio, planillas, campañas, plantillas y reportes. Se identifica el modo de demostración de correo y no se afirma entrega real.
+- Agentes: consultas y preparación de acciones de soporte y gestión humana, con confirmación y validación del backend.
+
+No se modificaron esos repositorios, no se ejecutaron consultas de negocio y no se transfirieron al portafolio fuentes, URLs privadas, nombres de personas, precios, porcentajes de comisión ni datos internos. El portafolio publica únicamente descripciones funcionales.
+
+Las comprobaciones de contenido ahora verifican el rol confirmado, el alcance revisado, la paridad de idiomas y la ausencia de resultados medidos y destinos no autorizados. La presentación principal muestra la necesidad, aporte, funcionalidades y valor de cada caso; las fichas amplían el contenido.
+
+Revisión de navegador de esta ampliación: los seis casos muestran aporte y seis funcionalidades en la página principal, y las seis fichas muestran responsabilidad integral, tres módulos y alcance de la revisión. Se probaron las dos traducciones; anchos 320, 375, 768 y 1366 para español y 320, 768 y 1366 para inglés, sin desbordamiento de página. La ficha de agentes se probó a 375 píxeles, sin desbordamiento interno. Filtros de categoría y cierre con Escape correctos. Consola sin errores ni advertencias.
+
 ## Alcance de la revisión
 
-Las ilustraciones de proyectos son conceptuales. Las funciones de los proyectos originales proceden del brief y no se contrastaron con sus repositorios. AGH y las acciones de agentes quedan pendientes de documentación. No se probó un despliegue remoto en Vercel: se deja la configuración y el procedimiento en `README.md`.
+Las ilustraciones son conceptuales. Las capacidades descritas se contrastaron con código y documentación, sin verificar el funcionamiento actual de los entornos productivos. Los resultados de uso, capturas reales, cobros de la tienda y entregas de correo requieren evidencia adicional. No se probó un despliegue remoto en Vercel: se deja la configuración y el procedimiento en `README.md`.
